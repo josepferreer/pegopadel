@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Punt de partit · pegopadel</title>
+<meta name="description" content="Torneig de pàdel del Club de Pàdel Pego. Dissabte 12 de desembre de 2026, 48 parelles, 1.500 € en premis. Primer el pàdel… i després, les cervesetes.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Montserrat:ital,wght@0,500;0,600;0,700;1,800&display=swap" rel="stylesheet">
+<style>
+@font-face { font-family: "Glacial Indifference"; src: url("assets/fonts/GlacialIndifference-Regular.otf") format("opentype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Glacial Indifference"; src: url("assets/fonts/GlacialIndifference-Bold.otf") format("opentype"); font-weight: 700; font-display: swap; }
+
+/* Lenguaje del cartel 9: azul pista, movimiento, grano, cursiva gruesa blanca con estela.
+   Toques de la serie: Instrument Serif en palabras sueltas, tablas con filetes, óvalo, amarillo solo en pelotas y botones. */
+:root {
+  --blau: #1E5BB8; --blau-fosc: #0D2C68; --nit: #071634; --blanc: #FFFFFF; --groc: #E9F542; --oliva: #1C2014;
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: "Montserrat", system-ui, sans-serif;
+  --text: "Glacial Indifference", "Montserrat", system-ui, sans-serif;
+  --gut: clamp(16px, 4vw, 56px);
+  --line: rgba(255,255,255,.55);
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--blau-fosc); color: var(--blanc); font-family: var(--text); font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+body::after { content: ""; position: fixed; inset: 0; z-index: 50; background-image: var(--grain); mix-blend-mode: overlay; opacity: .5; pointer-events: none; }
+a { color: inherit; }
+section { position: relative; }
+.logo { display: block; color: var(--blanc); --logo-seam: var(--blau-fosc); }
+.logo svg { display: block; width: 100%; height: auto; }
+.serif { font-family: var(--serif); font-weight: 400; font-style: italic; letter-spacing: -.01em; }
+
+/* titular con estela (el «Punt de partit») */
+.ghost { position: relative; margin: 0; font-family: var(--sans); font-weight: 800; font-style: italic; letter-spacing: -.055em; line-height: .95; }
+/* la estela son sombras horizontales del propio texto: vale para cualquier mezcla de fuentes y saltos de línea */
+.hero h1 { text-shadow: -.12em 0 .09em rgba(255,255,255,.42), .12em 0 .09em rgba(255,255,255,.42), -.3em 0 .16em rgba(255,255,255,.22), .3em 0 .16em rgba(255,255,255,.22); }
+.ghost .serif { font-weight: 400; letter-spacing: -.01em; }
+.h2 { font-size: clamp(44px, 5.4vw, 100px); }
+
+/* etiqueta de sección: número + nombre, como la línea «RUN CLUB / JERSEY / NY» */
+.kicker { display: flex; align-items: center; gap: 14px; margin: 0 0 clamp(20px, 3vw, 36px); font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; }
+.kicker::after { content: ""; flex: 0 0 56px; height: 1px; background: var(--line); }
+.kicker .serif { font-size: 20px; letter-spacing: 0; text-transform: none; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 24px; border-radius: 999px; font-family: var(--sans); font-weight: 700; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; border: 1.5px solid currentColor; }
+.btn--groc { background: var(--groc); color: var(--oliva); border-color: var(--groc); }
+.btn--line { color: var(--blanc); }
+
+.taula { width: 100%; border-collapse: collapse; font-family: var(--text); text-transform: uppercase; font-size: clamp(15px, 1.05vw, 18px); }
+.taula td { padding: 15px 0; border-top: 1px solid var(--line); }
+.taula tr:last-child td { border-bottom: 1px solid var(--line); }
+.taula td:last-child { text-align: right; padding-left: 24px; }
+.pilota { display: inline-block; width: .62em; height: .62em; border-radius: 50%; background: var(--groc); vertical-align: .02em; }
+
+/* sello ovalado del cartel 9 */
+.segell { width: min(320px, 86vw); aspect-ratio: 3.3 / 1; border: 1.5px solid #fff; border-radius: 50%; display: grid; place-content: center; gap: 4px; text-align: center; font-family: var(--sans); }
+.segell p { margin: 0; font-size: 9px; font-weight: 600; letter-spacing: .1em; }
+.segell__row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 4px; }
+.segell .logo { width: 86px; --logo-ball: #fff; --logo-seam: var(--blau); }
+.barres { width: 66px; height: 16px; background: repeating-linear-gradient(90deg, #fff 0 2px, transparent 2px 3px, #fff 3px 4px, transparent 4px 6px, #fff 6px 9px, transparent 9px 10px); }
+.segell b { font-size: 11px; }
+
+/* ---------- cabecera ---------- */
+.top { position: absolute; inset: 0 0 auto 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px var(--gut); }
+.top .logo { width: clamp(130px, 10vw, 180px); --logo-seam: var(--blau); }
+.top nav { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 36px); }
+.top nav a { font-family: var(--sans); font-weight: 600; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; }
+.top nav .btn { min-height: 40px; padding: 0 20px; font-size: 11px; }
+
+/* ---------- 1. portada ---------- */
+.hero { min-height: 100svh; display: grid; place-items: center; text-align: center; background: var(--blau) url("assets/hero-moviment.jpg") center 40% / cover no-repeat; overflow: hidden; padding: 120px var(--gut) 180px; }
+.hero__presenta { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+.hero__presenta .logo { width: clamp(130px, 10vw, 180px); --logo-seam: var(--oliva); }
+.hero__presenta span { font-family: var(--sans); font-weight: 600; font-size: clamp(11px, .85vw, 14px); letter-spacing: .08em; }
+.hero h1 { font-size: clamp(48px, 7vw, 132px); }
+.hero h1 > span { filter: blur(.6px); }
+.hero__sub { margin-top: clamp(18px, 2vw, 28px); display: grid; gap: 8px; font-family: var(--sans); font-weight: 600; font-size: clamp(12px, .9vw, 15px); letter-spacing: .04em; }
+.hero__sub small { font-size: inherit; font-weight: 500; }
+.hero__cta { margin-top: clamp(24px, 2.6vw, 38px); display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+.hero .segell { position: absolute; left: 50%; bottom: 36px; transform: translateX(-50%); }
+
+/* ---------- cinta ---------- */
+.cinta { background: var(--nit); border-block: 1px solid var(--line); overflow: hidden; white-space: nowrap; padding: 16px 0; font-family: var(--sans); font-weight: 800; font-style: italic; font-size: clamp(16px, 1.5vw, 24px); letter-spacing: -.03em; }
+.cinta span { display: inline-flex; align-items: center; gap: 30px; padding-right: 30px; }
+
+/* ---------- 2. el torneig ---------- */
+.torneig { background: linear-gradient(180deg, rgba(7,22,52,.35), rgba(7,22,52,.7)), url("assets/b-pista-nit.jpg") center / cover; padding: clamp(80px, 8vw, 130px) var(--gut); display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 6vw, 100px); align-items: end; }
+.oval { display: inline-grid; place-items: center; margin-bottom: clamp(24px, 3vw, 40px); padding: 12px 32px; border: 1.5px solid #fff; border-radius: 50%; font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spacing: .16em; line-height: 1.4; text-align: center; }
+.torneig h3 { margin: 0 0 18px; font-family: var(--sans); font-weight: 700; font-size: clamp(16px, 1.2vw, 20px); letter-spacing: .06em; text-transform: uppercase; }
+.torneig p { margin: 0 0 14px; font-size: clamp(16px, 1.1vw, 19px); max-width: 54ch; }
+
+/* ---------- 3. dades ---------- */
+.dades { background: var(--blau); display: grid; grid-template-columns: repeat(5, 1fr); border-bottom: 1px solid var(--line); }
+.dada { padding: clamp(24px, 2.4vw, 40px) var(--gut); border-left: 1px solid var(--line); }
+.dada:first-child { border-left: 0; }
+.dada small { display: block; font-family: var(--sans); font-weight: 600; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; }
+.dada strong { display: block; margin: 14px 0 6px; font-family: var(--sans); font-weight: 800; font-style: italic; font-size: clamp(30px, 2.5vw, 46px); letter-spacing: -.05em; line-height: 1; white-space: nowrap; }
+.dada span { font-family: var(--serif); font-style: italic; font-size: 19px; }
+
+/* ---------- 4. categories ---------- */
+.categories { background: var(--blau-fosc); padding: clamp(80px, 8vw, 130px) var(--gut); display: grid; grid-template-columns: 1fr 1.25fr; gap: clamp(32px, 6vw, 100px); align-items: end; }
+.categories .lead { margin: 22px 0 0; font-family: var(--sans); font-weight: 600; font-size: clamp(13px, 1vw, 16px); letter-spacing: .12em; text-transform: uppercase; }
+
+/* ---------- 5. horari ---------- */
+.horari { display: grid; grid-template-columns: 1fr 1.1fr; min-height: 88svh; background: var(--blau); }
+.horari__foto { position: relative; background: url("assets/b-pilota.jpg") center 70% / cover; display: flex; align-items: flex-end; padding: var(--gut); }
+.horari__foto p { margin: 0; font-family: var(--sans); font-weight: 800; font-style: italic; font-size: clamp(26px, 2.5vw, 44px); line-height: 1; letter-spacing: -.045em; }
+.horari__foto p .serif { font-weight: 400; }
+.horari__txt { padding: clamp(70px, 7vw, 110px) var(--gut); display: flex; flex-direction: column; justify-content: center; }
+.horari .h2 { margin-bottom: clamp(28px, 3vw, 44px); }
+.horari .taula td:first-child { width: 32%; font-variant-numeric: tabular-nums; }
+.horari .taula tr.despres td { font-weight: 700; }
+
+/* ---------- 6. premis ---------- */
+.premis { background: linear-gradient(90deg, rgba(7,22,52,.9) 35%, rgba(7,22,52,.35)), url("assets/b-raqueta.jpg") right center / cover; padding: clamp(80px, 8vw, 130px) var(--gut); }
+.premis__cap { display: flex; align-items: baseline; gap: 18px; font-family: var(--serif); font-style: italic; font-size: clamp(30px, 2.8vw, 48px); line-height: 1; }
+.premis .xifra { font-size: clamp(96px, 12vw, 220px); margin-top: 8px; }
+.premis .taula { max-width: 680px; margin-top: clamp(32px, 3.4vw, 52px); }
+.suport { margin-top: clamp(48px, 5vw, 76px); }
+.suport p { margin: 0; font-family: var(--sans); font-weight: 700; font-size: 12px; letter-spacing: .2em; }
+.suport div { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 18px; }
+.suport span { width: 170px; height: 68px; display: grid; place-items: center; border: 1.5px dashed var(--line); font-family: var(--sans); font-size: 12px; letter-spacing: .2em; opacity: .8; }
+
+/* ---------- 7. inscripció ---------- */
+.inscripcio { background: var(--blau); padding: clamp(80px, 8vw, 130px) var(--gut); }
+.passos { margin-top: clamp(40px, 4vw, 64px); display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+.pas { padding: 30px clamp(16px, 3vw, 48px) 0 0; }
+.pas + .pas { padding-left: clamp(16px, 3vw, 48px); border-left: 1px solid var(--line); }
+.pas b { display: block; font-family: var(--serif); font-weight: 400; font-style: italic; font-size: 56px; line-height: 1; }
+.pas h3 { margin: 12px 0 8px; font-family: var(--sans); font-weight: 700; font-size: 16px; letter-spacing: .08em; text-transform: uppercase; }
+.pas p { margin: 0; }
+.inscripcio__cta { margin-top: clamp(40px, 4vw, 60px); display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.inscripcio__cta small { margin-left: 8px; font-family: var(--sans); font-weight: 600; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; opacity: .85; }
+
+/* ---------- 8. on ---------- */
+.on { background: linear-gradient(90deg, rgba(7,22,52,.85) 30%, rgba(7,22,52,.25)), url("assets/b-arbres.jpg") center / cover; padding: clamp(80px, 9vw, 140px) var(--gut); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.on h2 { margin: 0; line-height: .9; }
+.on h2 .serif { display: block; font-size: clamp(88px, 9.5vw, 170px); }
+.on h2 .ghost { display: inline-block; font-size: clamp(36px, 3.4vw, 60px); margin-left: .1em; }
+.on dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 12px 28px; font-size: clamp(16px, 1.1vw, 19px); }
+.on dt { font-family: var(--sans); font-weight: 600; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; padding-top: 5px; }
+.on dd { margin: 0; }
+
+/* ---------- 9. dubtes ---------- */
+.faq { background: var(--blau-fosc); padding: clamp(80px, 8vw, 120px) var(--gut); display: grid; grid-template-columns: 1fr 2fr; gap: clamp(32px, 6vw, 100px); }
+.faq details { border-top: 1px solid var(--line); padding: 18px 0; }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 20px; font-family: var(--sans); font-weight: 600; font-size: clamp(16px, 1.1vw, 18px); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-weight: 500; font-size: 1.4em; line-height: 1; }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { margin: 14px 0 0; max-width: 70ch; opacity: .9; }
+
+/* ---------- peu ---------- */
+.peu { background: var(--nit); padding: clamp(64px, 7vw, 100px) var(--gut) 36px; }
+.peu > .logo { --logo-seam: var(--nit); width: min(100%, 1100px); }
+.peu__cols { margin-top: clamp(40px, 4vw, 64px); display: grid; grid-template-columns: 1.4fr 1fr 1fr auto; gap: 32px; align-items: start; }
+.peu__cols h4 { margin: 0 0 14px; font-family: var(--sans); font-weight: 600; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; }
+.peu__cols a { display: block; margin: 6px 0; text-decoration: none; }
+.peu__claim { margin: 0; font-family: var(--sans); font-weight: 800; font-style: italic; font-size: clamp(24px, 1.9vw, 34px); line-height: 1.05; letter-spacing: -.045em; }
+.peu__claim .serif { font-weight: 400; }
+.peu__legal { margin-top: 56px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.25); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: var(--sans); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; opacity: .75; }
+
+/* ---------- mòbil ---------- */
+@media (max-width: 900px) {
+  .top nav a:not(.btn) { display: none; }
+  .torneig, .categories, .horari, .on, .faq, .peu__cols { grid-template-columns: 1fr; }
+  .dades { grid-template-columns: 1fr 1fr; }
+  .dada { border-left: 0; border-top: 1px solid var(--line); }
+  .dada:nth-child(even) { border-left: 1px solid var(--line); }
+  .dada:first-child, .dada:nth-child(2) { border-top: 0; }
+  .dada:last-child { grid-column: 1 / -1; }
+  .horari__foto { min-height: 62svh; }
+  .passos { grid-template-columns: 1fr; }
+  .pas + .pas { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); margin-top: 30px; }
+  .hero { padding-bottom: 170px; }
+  .hero .segell { bottom: 28px; }
+  .segell p { font-size: 7.5px; }
+  .hero h1 { text-shadow: -.08em 0 .07em rgba(255,255,255,.35), .08em 0 .07em rgba(255,255,255,.35); }
+  .suport span { width: calc(50% - 9px); height: 64px; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>{{LOGO_SYMBOL}}</defs></svg>
+
+<header class="top">
+  <a class="logo" href="#inici" aria-label="pegopadel, inici"><svg viewBox="{{LOGO_VB}}"><use href="#logo-pegopadel"/></svg></a>
+  <nav aria-label="Seccions">
+    <a href="#torneig">El torneig</a>
+    <a href="#horari">Horari</a>
+    <a href="#premis">Premis</a>
+    <a href="#on">On</a>
+    <a class="btn btn--groc" href="#inscripcio">Apunta't</a>
+  </nav>
+</header>
+
+<main id="inici">
+  <!-- 1. portada -->
+  <section class="hero" aria-labelledby="titol">
+    <div>
+      <div class="hero__presenta">
+        <span class="logo" aria-label="pegopadel"><svg viewBox="{{LOGO_VB}}"><use href="#logo-pegopadel"/></svg></span>
+        <span>PRESENTA</span>
+      </div>
+      <h1 id="titol" class="ghost" data-text="Punt de partit"><span>Punt de partit</span></h1>
+      <div class="hero__sub">
+        <span>PÀDEL&nbsp;&nbsp;/&nbsp;&nbsp;PEGO&nbsp;&nbsp;/&nbsp;&nbsp;LA MARINA ALTA</span>
+        <small>MMXXVI · DISSABTE 12.12.2026</small>
+      </div>
+      <div class="hero__cta">
+        <a class="btn btn--groc" href="#inscripcio">Apunta't ja</a>
+        <a class="btn btn--line" href="#horari">Veure l'horari</a>
+      </div>
+    </div>
+    <div class="segell" aria-hidden="true">
+      <p>PRIMER EL PÀDEL… I DESPRÉS, LES CERVESETES</p>
+      <p>CLUB DE PÀDEL PEGO · 03780 PEGO</p>
+      <div class="segell__row"><span class="logo"><svg viewBox="{{LOGO_VB}}"><use href="#logo-pegopadel"/></svg></span><span class="barres"></span><b>26</b></div>
+    </div>
+  </section>
+
+  <div class="cinta" aria-hidden="true">
+    <span>Primer el pàdel… i després, les cervesetes <i class="pilota"></i> Punt, set, partit <i class="pilota"></i> 12.12.2026 <i class="pilota"></i> 48 parelles <i class="pilota"></i></span><span>Primer el pàdel… i després, les cervesetes <i class="pilota"></i> Punt, set, partit <i class="pilota"></i> 12.12.2026 <i class="pilota"></i> 48 parelles <i class="pilota"></i></span>
+  </div>
+
+  <!-- 2. el torneig -->
+  <section id="torneig" class="torneig" aria-labelledby="t-torneig">
+    <div>
+      <p class="kicker">01 · El torneig</p>
+      <div class="oval">GRAN PREMI<br>1.500 €</div>
+      <h2 id="t-torneig" class="ghost h2" data-text="Pàdel Open"><span>Pàdel <span class="serif">Open</span></span></h2>
+    </div>
+    <div>
+      <h3>Punt, set, partit… i cerveseta</h3>
+      <p>Un torneig per a tots els nivells. Tant si acabes d'agafar la pala com si fa anys que jugues, t'esperem per a jugar, competir i acabar el dia amb una cerveseta ben fresqueta.</p>
+      <p>Una jornada sencera de pàdel al poble: fase de grups pel matí, dinar tots junts, finals per la vesprada i entrega de premis. I després, el tercer temps a la barra.</p>
+    </div>
+  </section>
+
+  <!-- 3. dades -->
+  <section class="dades" aria-label="Dades clau">
+    <div class="dada"><small>Quan</small><strong>12.12</strong><span>dissabte, 2026</span></div>
+    <div class="dada"><small>Comença</small><strong>09:00</strong><span>acreditacions</span></div>
+    <div class="dada"><small>Places</small><strong>48</strong><span>parelles</span></div>
+    <div class="dada"><small>Inscripció</small><strong>25 €</strong><span>per parella</span></div>
+    <div class="dada"><small>En premis</small><strong>1.500 €</strong><span>més trofeu</span></div>
+  </section>
+
+  <!-- 4. categories -->
+  <section class="categories" aria-labelledby="t-cat">
+    <div>
+      <p class="kicker">02 · Inscripcions obertes</p>
+      <h2 id="t-cat" class="ghost h2" data-text="Apunta’t ja"><span>Apunta’t <span class="serif">ja</span></span></h2>
+      <p class="lead">Places limitades · 48 parelles</p>
+    </div>
+    <table class="taula">
+      <tr><td>Categories</td><td>Masculina • Femenina • Mixta</td></tr>
+      <tr><td>Nivells</td><td>Iniciació • Intermedi • Avançat</td></tr>
+      <tr><td>Preu</td><td>25 € per parella</td></tr>
+      <tr><td>Inclou</td><td>Samarreta + bossa de boles + dinar</td></tr>
+      <tr><td>Inscripcions</td><td>Fins al 5 de desembre</td></tr>
+    </table>
+  </section>
+
+  <!-- 5. horari -->
+  <section id="horari" class="horari" aria-labelledby="t-horari">
+    <div class="horari__foto"><p>Primer el pàdel…<br><span class="serif">i després,</span><br>les cervesetes</p></div>
+    <div class="horari__txt">
+      <p class="kicker">03 · Horari</p>
+      <h2 id="t-horari" class="ghost h2" data-text="Dia de partit"><span>Dia de <span class="serif">partit</span></span></h2>
+      <table class="taula">
+        <tr><td>09:00</td><td>Acreditacions</td></tr>
+        <tr><td>09:30</td><td>Fase de grups</td></tr>
+        <tr><td>14:00</td><td>Dinar</td></tr>
+        <tr><td>17:00</td><td>Finals</td></tr>
+        <tr><td>19:00</td><td>Entrega de premis + copa</td></tr>
+        <tr class="despres"><td>I després <i class="pilota"></i></td><td>Tercer temps a la barra</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 6. premis -->
+  <section id="premis" class="premis" aria-labelledby="t-premis">
+    <p class="kicker">04 · Premis</p>
+    <p class="premis__cap" id="t-premis">Gran premi</p>
+    <h2 class="ghost xifra" data-text="1.500 €"><span>1.500 €</span></h2>
+    <table class="taula">
+      <tr><td>Primer lloc</td><td>800 € + trofeu</td></tr>
+      <tr><td>Segon lloc</td><td>450 €</td></tr>
+      <tr><td>Tercer lloc</td><td>250 € en material</td></tr>
+    </table>
+    <div class="suport">
+      <p>AMB EL SUPORT DE</p>
+      <div><span>LOGO</span><span>LOGO</span><span>LOGO</span></div>
+    </div>
+  </section>
+
+  <!-- 7. inscripció -->
+  <section id="inscripcio" class="inscripcio" aria-labelledby="t-ins">
+    <p class="kicker">05 · Com apuntar-se</p>
+    <h2 id="t-ins" class="ghost h2" data-text="Reserva la plaça"><span>Reserva la <span class="serif">plaça</span></span></h2>
+    <div class="passos">
+      <div class="pas"><b>1</b><h3>Busca parella</h3><p>La inscripció és per parelles. Tria categoria (masculina, femenina o mixta) i el vostre nivell.</p></div>
+      <div class="pas"><b>2</b><h3>Escriu-nos</h3><p>Per telèfon al 600 123 456 o per Instagram a @padelpego, amb els noms de la parella, la categoria i el nivell.</p></div>
+      <div class="pas"><b>3</b><h3>Confirma</h3><p>25 € per parella, abans del 5 de desembre. Inclou samarreta, bossa de boles i dinar.</p></div>
+    </div>
+    <div class="inscripcio__cta">
+      <a class="btn btn--groc" href="tel:+34600123456">Truca al 600 123 456</a>
+      <a class="btn btn--line" href="https://instagram.com/padelpego">Instagram</a>
+      <small>Places limitades · 48 parelles</small>
+    </div>
+  </section>
+
+  <!-- 8. on -->
+  <section id="on" class="on" aria-labelledby="t-on">
+    <div>
+      <p class="kicker">06 · On</p>
+      <h2 id="t-on"><span class="serif">Juga</span><span class="ghost" data-text="a Pego"><span>a Pego</span></span></h2>
+    </div>
+    <dl>
+      <dt>Club</dt><dd>Club de Pàdel Pego</dd>
+      <dt>On</dt><dd>03780 Pego · La Marina Alta</dd>
+      <dt>Quan</dt><dd>Dissabte 12 de desembre de 2026, des de les 09:00</dd>
+      <dt>Contacte</dt><dd>600 123 456 · @padelpego</dd>
+    </dl>
+  </section>
+
+  <!-- 9. dubtes -->
+  <section class="faq" aria-labelledby="t-faq">
+    <div>
+      <p class="kicker">07 · Dubtes</p>
+      <h2 id="t-faq" class="ghost h2" data-text="Preguntes"><span>Pregun<span class="serif">tes</span></span></h2>
+    </div>
+    <div>
+      <details><summary>He de tindre parella per a apuntar-me?</summary><p>Sí, la inscripció és per parelles: 25 € per parella. Si no en tens, escriu-nos i mirem d'ajudar-te.</p></details>
+      <details><summary>Quin nivell cal per a jugar?</summary><p>Cap en concret. Hi ha nivell d'iniciació, intermedi i avançat, en categoria masculina, femenina i mixta.</p></details>
+      <details><summary>Què inclou la inscripció?</summary><p>Samarreta del torneig, bossa de boles i el dinar de la jornada.</p></details>
+      <details><summary>Fins quan em puc apuntar?</summary><p>Fins al 5 de desembre o fins que s'omplin les 48 places, el que passe abans.</p></details>
+      <details><summary>Quins premis hi ha?</summary><p>1.500 € en total: 800 € i trofeu per al primer lloc, 450 € per al segon i 250 € en material per al tercer.</p></details>
+      <details><summary>I després del torneig?</summary><p>Tercer temps a la barra. Primer el pàdel… i després, les cervesetes.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="peu">
+  <span class="logo" aria-label="pegopadel"><svg viewBox="{{LOGO_VB}}"><use href="#logo-pegopadel"/></svg></span>
+  <div class="peu__cols">
+    <p class="peu__claim">Primer el pàdel…<br><span class="serif">i després,</span> les cervesetes.</p>
+    <div><h4>Contacte</h4><a href="tel:+34600123456">600 123 456</a><a href="https://instagram.com/padelpego">@padelpego</a><a href="https://padelpego.es">padelpego.es</a></div>
+    <div><h4>Torneig</h4><a href="#torneig">El torneig</a><a href="#horari">Horari</a><a href="#premis">Premis</a><a href="#inscripcio">Inscripció</a></div>
+    <div class="segell" aria-hidden="true">
+      <p>PRIMER EL PÀDEL… I DESPRÉS, LES CERVESETES</p>
+      <p>CLUB DE PÀDEL PEGO · 03780 PEGO</p>
+      <div class="segell__row"><span class="logo"><svg viewBox="{{LOGO_VB}}"><use href="#logo-pegopadel"/></svg></span><span class="barres"></span><b>26</b></div>
+    </div>
+  </div>
+  <div class="peu__legal"><span>© 2026 Club de Pàdel Pego</span><span>MMXXVI · 03780 Pego · La Marina Alta</span></div>
+</footer>
+</body>
+</html>
