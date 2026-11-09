@@ -6,8 +6,7 @@ Web estàtica: `index.html` + `assets/`. Es publica amb GitHub Pages des de la b
 
 ## Editar
 
-- Els textos i l'estil es toquen a `index.src.html`.
-- Després s'executa `python build.py`, que genera `index.html` inserint-hi el logo SVG (`assets/logo-symbol.svg.txt`).
+Tot està dins d'`index.html` (textos, estil i el logo en SVG). Es canvia el fitxer i es puja: GitHub Pages actualitza la web en un parell de minuts.
 
 ## Crèdits
 
